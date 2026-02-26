@@ -1,0 +1,119 @@
+import os
+import faiss
+import pickle
+import numpy as np
+from fastapi import FastAPI
+from pydantic import BaseModel
+from sentence_transformers import SentenceTransformer
+from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv()
+
+app = FastAPI(title="DESCO RAG + Fallback Support API")
+
+# Embedding model
+embed_model = SentenceTransformer("all-MiniLM-L6-v2")  # upgrade if needed
+
+# Load vector store
+try:
+    index = faiss.read_index("vectorstore/faiss_index")
+    with open("vectorstore/chunks.pkl", "rb") as f:
+        chunks = pickle.load(f)
+    print(f"Loaded {index.ntotal} vectors, {len(chunks)} chunks")
+except Exception as e:
+    print(f"Vector store load failed: {e}")
+    raise
+
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+class QueryRequest(BaseModel):
+    question: str
+
+def retrieve_context(question: str, top_k: int = 6, min_chars: int = 300) -> tuple[str, list[dict]]:
+    q_emb = embed_model.encode([question])
+    distances, indices = index.search(np.array(q_emb), top_k)
+    
+    retrieved = []
+    for d, idx in zip(distances[0], indices[0]):
+        if idx == -1 or idx >= len(chunks):
+            continue
+        # Optional: skip very poor matches (cosine distance threshold ~0-2 range)
+        if d > 0.7:  # adjust based on your embeddings
+            continue
+        retrieved.append(chunks[idx])
+    
+    if not retrieved:
+        return "", []
+    
+    context_str = "\n\n".join(d["content"] for d in retrieved)
+    sources = [{"pdf_name": d["pdf_name"], "page_number": d["page_number"]} for d in retrieved]
+    
+    # If context too short → treat as "not found"
+    if len(context_str) < min_chars:
+        return "", []
+    
+    return context_str, sources
+
+@app.post("/chat")
+async def chat(request: QueryRequest):
+    q = request.question.strip()
+    print(f"[QUERY] {q!r}")
+    
+    context, sources = retrieve_context(q)
+    
+    print(f"[RETRIEVAL] {len(sources)} chunks | {len(context)} chars")
+    if sources:
+        print(f"[SOURCES] {sources}")
+    
+    if context.strip():
+        # Normal RAG path: strict context-only
+        print("[RAG MODE] Using retrieved context")
+        prompt = f"""You are a helpful DESCO electricity support assistant.
+Answer concisely and ONLY using the provided context from official DESCO documents.
+Do NOT add external knowledge or guess.
+If the answer is not clearly present or inferable from the context, reply exactly with:
+"Information not available in DESCO documents."
+
+Context:
+{context}
+
+Question: {q}
+
+Answer:"""
+        use_sources = sources
+    else:
+        # Fallback: general LLM with disclaimer
+        print("[FALLBACK MODE] No relevant context → using general knowledge")
+        prompt = f"""You are a helpful assistant knowledgeable about DESCO (Dhaka Electric Supply Company Limited) in Bangladesh.
+The question is about DESCO electricity services.
+Answer concisely and helpfully based on your general knowledge.
+Include this disclaimer at the start: "This is general information (not from specific DESCO documents). Please verify on desco.gov.bd or contact DESCO support."
+
+Question: {q}
+
+Answer:"""
+        use_sources = []  # no sources in fallback mode
+
+    try:
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",  # or your preferred model
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            max_tokens=500,
+        )
+        answer = resp.choices[0].message.content.strip()
+        print(f"[LLM] {answer[:150]}{'…' if len(answer) > 150 else ''}")
+    except Exception as e:
+        print(f"[ERROR] {e}")
+        answer = f"Error: Could not get response from AI ({str(e)})"
+    
+    return {
+        "answer": answer,
+        "sources": use_sources,
+        "mode": "RAG" if context.strip() else "Fallback"
+    }
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "vectors": index.ntotal}

@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1,
+    "intent": "check_balance",
+    "category": "prepaid",
+    "question_variants": [
+      "ব্যালেন্স চেক করতে পারছি না",
+      "প্রিপেইড মিটারের ব্যালেন্স কিভাবে দেখবো?",
+      "মিটারে বর্তমান ব্যালেন্স কিভাবে চেক করবো?"
+    ],
+    "answer": "স্মার্ট প্রিপেইড মিটারে অপশন থেকে ব্যালেন্স দেখা যাবে। স্মার্ট কার্ড মিটারে কার্ড পাঞ্চ করলে ব্যালেন্স দেখা যাবে। বাটন মিটারে 801 প্রেস করলে ব্যালেন্স দেখা যাবে।",
+    "keywords": ["balance", "prepaid", "meter"]
+  },
+  {
+    "id": 2,
+    "intent": "bill_correction",
+    "category": "postpaid",
+    "question_variants": [
+      "পোস্টপেইড বিলে রিডিং বেশি এসেছে কেন?",
+      "ডিমান্ড চার্জ বেশি কেন?",
+      "পোস্টপেইড বিল ঠিক না হলে কি করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Bill Correction' সার্ভিস দিয়ে সার্ভিস রিকোয়েস্ট করতে হবে।",
+    "keywords": ["bill", "correction", "postpaid"]
+  },
+  {
+    "id": 3,
+    "intent": "recharge_methods",
+    "category": "payment",
+    "question_variants": [
+      "রিচার্জ কিভাবে করবো?",
+      "বিল কিভাবে পরিশোধ করবো?",
+      "কোন কোন মাধ্যমে রিচার্জ করা যায়?"
+    ],
+    "answer": "বিকাশ, নগদ, রকেট, উপায়, MFS, ব্যাংকিং, ভেন্ডিং স্টেশন এবং ডেসকো অ্যাপের মাধ্যমে বিল বা রিচার্জ করা যায়।",
+    "keywords": ["recharge", "payment", "bkash", "nagad"]
+  },
+  {
+    "id": 4,
+    "intent": "wrong_account_recharge",
+    "category": "recharge_issue",
+    "question_variants": [
+      "ভুল অ্যাকাউন্টে রিচার্জ হয়ে গেছে",
+      "ভুল নম্বরে রিচার্জ করেছি কি করবো?"
+    ],
+    "answer": "যে গ্রাহক সেবা কেন্দ্রের আওতাভুক্ত সেই কেন্দ্রে যোগাযোগ করতে হবে।",
+    "keywords": ["wrong recharge", "account issue"]
+  },
+  {
+    "id": 5,
+    "intent": "cross_company_recharge",
+    "category": "recharge_issue",
+    "question_variants": [
+      "ডেসকোতে রিচার্জ করতে গিয়ে অন্য কোম্পানিতে হয়েছে",
+      "নেসকোতে ভুলে রিচার্জ করেছি"
+    ],
+    "answer": "সেই সংশ্লিষ্ট বিদ্যুৎ কোম্পানির হটলাইনে যোগাযোগ করতে হবে।",
+    "keywords": ["cross recharge", "company issue"]
+  },
+  {
+    "id": 6,
+    "intent": "portal_not_updating",
+    "category": "portal_issue",
+    "question_variants": [
+      "প্রিপেইড পোর্টাল আপডেট হচ্ছে না",
+      "Daily consumption দেখাচ্ছে না",
+      "Monthly consumption দেখাচ্ছে না"
+    ],
+    "answer": "OCSMS পোর্টালে 'Other' সার্ভিস দিয়ে সার্ভিস রিকোয়েস্ট করতে হবে।",
+    "keywords": ["portal", "update issue"]
+  },
+  {
+    "id": 7,
+    "intent": "app_login_issue",
+    "category": "app_issue",
+    "question_variants": [
+      "ডেসকো অ্যাপে লগইন করতে পারছি না",
+      "অ্যাপে ব্যালেন্স দেখা যাচ্ছে না"
+    ],
+    "answer": "অ্যাপের ক্যাশ ক্লিয়ার করুন বা পুনরায় ইন্সটল করুন। সমস্যা থাকলে গ্রাহক সেবা কেন্দ্রে যোগাযোগ করুন।",
+    "keywords": ["app", "login issue"]
+  },
+  {
+    "id": 8,
+    "intent": "delayed_recharge_penalty",
+    "category": "prepaid",
+    "question_variants": [
+      "অনেকদিন রিচার্জ না করলে ফাইন হবে?",
+      "৫-৬ মাস পরে রিচার্জ করলে কি সমস্যা হবে?"
+    ],
+    "answer": "মিটার রেন্ট ও ডিমান্ড চার্জ সমন্বয়ে কাটা হবে, অতিরিক্ত ফাইন নেই।",
+    "keywords": ["penalty", "delayed recharge"]
+  },
+  {
+    "id": 9,
+    "intent": "mfs_recharge_problem",
+    "category": "payment_issue",
+    "question_variants": [
+      "বিকাশ দিয়ে রিচার্জ হচ্ছে না",
+      "নগদ দিয়ে রিচার্জ করতে পারছি না"
+    ],
+    "answer": "অন্য মাধ্যম ব্যবহার করুন। সমস্যা থাকলে গ্রাহক সেবা কেন্দ্রে যোগাযোগ করুন।",
+    "keywords": ["bkash issue", "nagad issue"]
+  },
+  {
+    "id": 10,
+    "intent": "recharge_not_reflected",
+    "category": "recharge_issue",
+    "question_variants": [
+      "রিচার্জ করেছি কিন্তু টাকা মিটারে যোগ হয়নি"
+    ],
+    "answer": "প্রথমে রিচার্জ মাধ্যমের সাথে যোগাযোগ করুন। প্রয়োজন হলে ডেসকো অফিসে বিস্তারিত তথ্যসহ যোগাযোগ করুন।",
+    "keywords": ["recharge fail", "not added"]
+  },
+
+  {
+    "id": 11,
+    "intent": "emergency_loan",
+    "category": "prepaid",
+    "question_variants": [
+      "ইমার্জেন্সি লোন কিভাবে নেব?",
+      "বাটন মিটারে ইমার্জেন্সি কিভাবে নিব?"
+    ],
+    "answer": "বাটন মিটারে 811 প্রেস করুন। স্মার্ট কার্ড মিটারে কার্ড ৫ সেকেন্ড পাঞ্চ করুন।",
+    "keywords": ["emergency", "loan"]
+  },
+
+  {
+    "id": 12,
+    "intent": "emergency_balance_amount",
+    "category": "prepaid",
+    "question_variants": [
+      "ইমার্জেন্সি ব্যালেন্স কত দেয়?",
+      "সবসময় একই এমাউন্ট দেয়?"
+    ],
+    "answer": "কিছু মিটারে ১০০ বা ২০০ টাকা দেয়া হয় এবং পরবর্তী রিচার্জে সমন্বয় করা হয়।",
+    "keywords": ["emergency balance"]
+  },
+
+  {
+    "id": 13,
+    "intent": "demand_charge_info",
+    "category": "billing",
+    "question_variants": [
+      "ডিমান্ড চার্জ কি?",
+      "ডিমান্ড চার্জ কিসের উপর নির্ভর করে?"
+    ],
+    "answer": "বরাদ্দকৃত লোড ও গ্রাহকের শ্রেণীর উপর নির্ভর করে ডিমান্ড চার্জ নির্ধারিত হয়।",
+    "keywords": ["demand charge"]
+  },
+
+  {
+    "id": 14,
+    "intent": "meter_rent_info",
+    "category": "billing",
+    "question_variants": [
+      "মিটার রেন্ট কত?",
+      "মিটার ভাড়া কত?"
+    ],
+    "answer": "সিঙ্গেল ফেজ মিটার রেন্ট ৪০ টাকা। থ্রি ফেজ মিটার রেন্ট ২৫০ টাকা।",
+    "keywords": ["meter rent"]
+  },
+
+  {
+    "id": 15,
+    "intent": "ownership_change",
+    "category": "service_request",
+    "question_variants": [
+      "মালিকানা পরিবর্তন করতে চাই",
+      "Ownership Change কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Ownership Change' সার্ভিস দিয়ে আবেদন করতে হবে এবং প্রয়োজনীয় ডকুমেন্ট সংযুক্ত করতে হবে।",
+    "keywords": ["ownership", "change"]
+  },
+  {
+    "id": 16,
+    "intent": "profile_information_correction",
+    "category": "service_request",
+    "question_variants": [
+      "নাম সংশোধন কিভাবে করবো?",
+      "মোবাইল নম্বর পরিবর্তন করবো কিভাবে?",
+      "ইমেইল ঠিকানা সংশোধন করতে চাই"
+    ],
+    "answer": "OCSMS পোর্টালে 'Name/Mobile/Email Correction' সার্ভিস দিয়ে আবেদন করতে হবে এবং প্রয়োজনীয় ডকুমেন্ট সংযুক্ত করতে হবে।",
+    "keywords": ["name correction", "mobile update", "email change"]
+  },
+  {
+    "id": 17,
+    "intent": "meter_battery_change",
+    "category": "service_request",
+    "question_variants": [
+      "মিটারের ব্যাটারি পরিবর্তন করতে চাই",
+      "মিটার ব্যাটারি চেঞ্জ করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Other' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["battery", "meter"]
+  },
+  {
+    "id": 18,
+    "intent": "meter_card_issue",
+    "category": "service_request",
+    "question_variants": [
+      "মিটারের কার্ড হারিয়ে গেছে",
+      "কার্ড নষ্ট হয়ে গেছে",
+      "নতুন কার্ড পেতে কি করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Card Issue' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["card", "lost", "replacement"]
+  },
+  {
+    "id": 19,
+    "intent": "meter_test_request",
+    "category": "service_request",
+    "question_variants": [
+      "মিটার পরীক্ষা করাতে চাই",
+      "মিটার টেস্ট কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Meter Test' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["meter test"]
+  },
+  {
+    "id": 20,
+    "intent": "meter_shift_request",
+    "category": "service_request",
+    "question_variants": [
+      "মিটার স্থান পরিবর্তন করতে চাই",
+      "মিটার শিফট করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Meter Shift' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["meter shift"]
+  },
+  {
+    "id": 21,
+    "intent": "meter_inspection_request",
+    "category": "service_request",
+    "question_variants": [
+      "মিটার পরিদর্শনের জন্য আবেদন করবো কিভাবে?",
+      "মিটার চেক করাতে চাই"
+    ],
+    "answer": "OCSMS পোর্টালে 'Meter Inspection' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["inspection", "meter"]
+  },
+  {
+    "id": 22,
+    "intent": "connection_disconnection",
+    "category": "service_request",
+    "question_variants": [
+      "বিদ্যুৎ সংযোগ বিচ্ছিন্ন করতে চাই",
+      "Disconnection কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Disconnection' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["disconnection"]
+  },
+  {
+    "id": 23,
+    "intent": "connection_reconnection",
+    "category": "service_request",
+    "question_variants": [
+      "বিচ্ছিন্ন সংযোগ পুনঃসংযোগ করবো কিভাবে?",
+      "Reconnection আবেদন কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Reconnection' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["reconnection"]
+  },
+  {
+    "id": 24,
+    "intent": "load_increase_request",
+    "category": "service_request",
+    "question_variants": [
+      "লোড বাড়াতে চাই",
+      "Load change করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Load Change' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["load increase"]
+  },
+  {
+    "id": 25,
+    "intent": "load_decrease_policy",
+    "category": "policy",
+    "question_variants": [
+      "লোড কমানো যাবে?",
+      "বরাদ্দকৃত লোড কমাতে পারবো?"
+    ],
+    "answer": "লোড বৃদ্ধি করা যায়, তবে কমানো যায় না।",
+    "keywords": ["load decrease"]
+  },
+  {
+    "id": 26,
+    "intent": "meter_change_request",
+    "category": "service_request",
+    "question_variants": [
+      "মিটার পরিবর্তন করতে চাই",
+      "Meter change আবেদন কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Meter Change' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["meter change"]
+  },
+  {
+    "id": 27,
+    "intent": "meter_red_light_issue",
+    "category": "technical_issue",
+    "question_variants": [
+      "মিটারে টাকা থাকা সত্ত্বেও লাল বাতি জ্বলছে কেন?",
+      "লাল লাইট সমস্যা"
+    ],
+    "answer": "মিটার পরিদর্শনের জন্য 'Meter Inspection' সার্ভিসে আবেদন করতে হবে।",
+    "keywords": ["red light", "meter issue"]
+  },
+  {
+    "id": 28,
+    "intent": "service_drop_change",
+    "category": "service_request",
+    "question_variants": [
+      "সার্ভিস ড্রপ ক্যাবল পরিবর্তন করতে চাই",
+      "তার পরিবর্তন করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Service Drop Change' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["cable", "service drop"]
+  },
+  {
+    "id": 29,
+    "intent": "tariff_change_request",
+    "category": "service_request",
+    "question_variants": [
+      "ট্যারিফ পরিবর্তন করবো কিভাবে?",
+      "Tariff change আবেদন কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Tariff Change' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["tariff change"]
+  },
+  {
+    "id": 30,
+    "intent": "wrong_sms_issue",
+    "category": "complaint",
+    "question_variants": [
+      "আমি মিটার ব্যবহার করি না কিন্তু SMS পাচ্ছি",
+      "ভুল SMS আসছে কেন?"
+    ],
+    "answer": "একাউন্ট নম্বর ও মোবাইল নম্বর প্রদান করে অভিযোগ করতে হবে।",
+    "keywords": ["sms issue"]
+  },
+  {
+    "id": 31,
+    "intent": "service_request_status",
+    "category": "service_tracking",
+    "question_variants": [
+      "OCSMS সার্ভিস রিকোয়েস্টের আপডেট জানতে চাই",
+      "ট্র্যাকিং নাম্বার দিয়ে স্ট্যাটাস কিভাবে জানবো?"
+    ],
+    "answer": "ট্র্যাকিং বা সার্ভিস নম্বর প্রদান করলে স্ট্যাটাস জানানো যাবে।",
+    "keywords": ["tracking", "service status"]
+  },
+  {
+    "id": 32,
+    "intent": "new_connection_application",
+    "category": "new_connection",
+    "question_variants": [
+      "নতুন সংযোগ নিতে কি করতে হবে?",
+      "নতুন বিদ্যুৎ সংযোগ আবেদন কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে আবেদন করতে হবে এবং প্রয়োজনীয় ডকুমেন্ট সংযুক্ত করতে হবে।",
+    "keywords": ["new connection"]
+  },
+  {
+    "id": 33,
+    "intent": "due_bill_check",
+    "category": "billing",
+    "question_variants": [
+      "পূর্বের বকেয়া বিল আছে কিনা দেখতে চাই",
+      "Due bill চেক করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টালে Billing Account Option থেকে বকেয়া বিল দেখা যাবে।",
+    "keywords": ["due bill"]
+  },
+  {
+    "id": 34,
+    "intent": "bill_copy_download",
+    "category": "billing",
+    "question_variants": [
+      "এই মাসের বিল কপি পাচ্ছি না",
+      "Bill copy ডাউনলোড করবো কিভাবে?"
+    ],
+    "answer": "OCSMS পোর্টাল থেকে বিল কপি ডাউনলোড করা যাবে অথবা গ্রাহক সেবা কেন্দ্রে যোগাযোগ করতে হবে।",
+    "keywords": ["bill copy"]
+  },
+  {
+    "id": 35,
+    "intent": "lifeline_tariff_adjustment",
+    "category": "billing",
+    "question_variants": [
+      "হঠাৎ বেশি টাকা কেটে নেওয়া হয় কেন?",
+      "৫০ ইউনিট পার হলে অতিরিক্ত টাকা কেন কাটে?"
+    ],
+    "answer": "৫০ ইউনিট অতিক্রম করলে লাইফলাইন ট্যারিফ সমন্বয় করে অতিরিক্ত পার্থক্য কাটা হয়।",
+    "keywords": ["lifeline tariff"]
+  },
+  {
+    "id": 36,
+    "intent": "supply_cutoff_time",
+    "category": "prepaid",
+    "question_variants": [
+      "ব্যালেন্স শেষ হলে কতক্ষণ পর বিদ্যুৎ বন্ধ হবে?",
+      "ইমার্জেন্সি শেষ হলে কি হবে?"
+    ],
+    "answer": "ইমার্জেন্সি ব্যালেন্স শেষ হলে কর্মদিবসে নির্ধারিত সময়ে বিদ্যুৎ বন্ধ হবে।",
+    "keywords": ["cutoff", "balance end"]
+  },
+  {
+    "id": 37,
+    "intent": "prepaid_rebate_info",
+    "category": "prepaid",
+    "question_variants": [
+      "প্রিপেইড মিটারে কি বেশি খরচ হয়?",
+      "প্রিপেইডে কি রিবেট আছে?"
+    ],
+    "answer": "না। প্রিপেইড মিটারে ৫% রিবেট প্রদান করা হয়।",
+    "keywords": ["rebate"]
+  },
+  {
+    "id": 38,
+    "intent": "document_upload_issue",
+    "category": "portal_issue",
+    "question_variants": [
+      "ডকুমেন্ট আপলোড হচ্ছে না",
+      "সংযুক্ত ফাইল কাজ করছে না"
+    ],
+    "answer": "ফাইল সাইজ ৭০০KB এর মধ্যে ও সঠিক ফরম্যাটে রাখতে হবে এবং ফাইলের নাম ছোট ও স্পেশাল ক্যারেক্টার মুক্ত রাখতে হবে।",
+    "keywords": ["upload issue"]
+  },
+  {
+    "id": 39,
+    "intent": "official_email",
+    "category": "contact_info",
+    "question_variants": [
+      "ডেসকোর ইমেইল ঠিকানা কি?",
+      "Contact email কি?"
+    ],
+    "answer": "contactcenter@desco.gov.bd",
+    "keywords": ["email"]
+  },
+  {
+    "id": 40,
+    "intent": "hotline_minute_call",
+    "category": "contact_info",
+    "question_variants": [
+      "মিনিট দিয়ে হটলাইনে কথা বলা যাবে?",
+      "Long code নম্বর কি?"
+    ],
+    "answer": "09610016120 নম্বরে কল করলে মিনিট দিয়ে কথা বলা যাবে।",
+    "keywords": ["hotline"]
+  },
+  {
+    "id": 41,
+    "intent": "unscheduled_loadshedding",
+    "category": "complaint",
+    "question_variants": [
+      "শিডিউল ছাড়া লোডশেডিং হয়েছে",
+      "হঠাৎ বিদ্যুৎ চলে গেছে কেন?"
+    ],
+    "answer": "একাউন্ট নম্বর প্রদান করে অভিযোগ করতে হবে। এলাকায় পূর্বে অভিযোগ থাকলে সেটির আপডেট জানানো হবে।",
+    "keywords": ["loadshedding", "complaint"]
+  },
+  {
+    "id": 42,
+    "intent": "scheduled_maintenance",
+    "category": "maintenance",
+    "question_variants": [
+      "শিডিউল ডাউন টাইম চলছে",
+      "Maintenance এর জন্য বিদ্যুৎ বন্ধ?"
+    ],
+    "answer": "রক্ষণাবেক্ষণ কাজের জন্য নির্ধারিত সময়ে বিদ্যুৎ সরবরাহ বন্ধ থাকতে পারে। সময় অতিক্রম করলে অভিযোগ করা যাবে।",
+    "keywords": ["maintenance", "downtime"]
+  },
+  {
+    "id": 43,
+    "intent": "service_request_payment",
+    "category": "payment",
+    "question_variants": [
+      "সার্ভিস রিকুয়েস্টের বিল কিভাবে পরিশোধ করবো?",
+      "Service request fee কিভাবে দেবো?"
+    ],
+    "answer": "OCSMS পোর্টালে লগইন করে সার্ভিস রিকোয়েস্ট অপশন থেকে বিল পরিশোধ করা যাবে।",
+    "keywords": ["service fee", "payment"]
+  },
+  {
+    "id": 44,
+    "intent": "power_factor_charge",
+    "category": "billing",
+    "question_variants": [
+      "Power Factor Charge কত?",
+      "PFC কিভাবে গণনা হয়?"
+    ],
+    "answer": "মাসিক গড় পাওয়ার ফ্যাক্টর 0.95 এর কম হলে সারচার্জ প্রযোজ্য। 0.75 পর্যন্ত প্রতি 0.01 কমে 0.75% চার্জ প্রযোজ্য।",
+    "keywords": ["PFC", "power factor"]
+  },
+  {
+    "id": 45,
+    "intent": "peak_offpeak_hour",
+    "category": "tariff",
+    "question_variants": [
+      "পিক আওয়ার কখন?",
+      "অফ পিক আওয়ার কতটা থেকে কতটা?"
+    ],
+    "answer": "পিক আওয়ার: বিকাল ৫টা – সকাল ১১টা। অফ পিক: সকাল ১১টা – বিকাল ৫টা। সুপার অফ পিক: সকাল ৫টা – সকাল ৯টা।",
+    "keywords": ["peak hour", "off peak"]
+  },
+  {
+    "id": 46,
+    "intent": "emergency_balance_interest",
+    "category": "prepaid",
+    "question_variants": [
+      "ইমার্জেন্সি ব্যালেন্সে কি সুদ আছে?",
+      "ইমার্জেন্সি লোনে অতিরিক্ত টাকা কাটে?"
+    ],
+    "answer": "না। ব্যবহৃত পরিমাণ পরবর্তী রিচার্জ থেকে সমন্বয় করা হয়।",
+    "keywords": ["emergency", "interest"]
+  },
+  {
+    "id": 47,
+    "intent": "late_payment_charge",
+    "category": "billing",
+    "question_variants": [
+      "LPC কি?",
+      "Late Payment Charge কত?"
+    ],
+    "answer": "Late Payment Charge (LPC) হলো বকেয়া বিলের উপর ৫% চার্জ।",
+    "keywords": ["LPC", "late fee"]
+  },
+  {
+    "id": 48,
+    "intent": "pole_shift_request",
+    "category": "service_request",
+    "question_variants": [
+      "পোল স্থানান্তর করতে চাই",
+      "বিদ্যুতের পোল সরাতে কি করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Others' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["pole shift"]
+  },
+  {
+    "id": 49,
+    "intent": "meter_seal_issue",
+    "category": "service_request",
+    "question_variants": [
+      "মিটারের সিল নষ্ট হয়েছে",
+      "মিটার সিল ভেঙে গেছে"
+    ],
+    "answer": "OCSMS পোর্টালে 'Others > TC Seal' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["seal issue"]
+  },
+  {
+    "id": 50,
+    "intent": "temporary_shutdown",
+    "category": "service_request",
+    "question_variants": [
+      "সাময়িক সময়ের জন্য সংযোগ বন্ধ করতে চাই",
+      "Temporary shutdown আবেদন কিভাবে করবো?"
+    ],
+    "answer": "OCSMS পোর্টালে 'Shutdown (RC)' সার্ভিস দিয়ে আবেদন করতে হবে।",
+    "keywords": ["shutdown"]
+  },
+  {
+    "id": 51,
+    "intent": "distribution_center_count",
+    "category": "organization_info",
+    "question_variants": [
+      "ডেসকোতে কয়টি বিক্রয় বিতরণ কেন্দ্র রয়েছে?",
+      "মোট কতটি বিভাগ আছে?"
+    ],
+    "answer": "ডেসকোতে মোট ২৪টি বিক্রয় ও বিতরণ বিভাগ রয়েছে।",
+    "keywords": ["division", "center"]
+  },
+  {
+    "id": 52,
+    "intent": "desco_establishment",
+    "category": "organization_info",
+    "question_variants": [
+      "ডেসকো কবে প্রতিষ্ঠিত হয়?",
+      "ডেসকো কি?"
+    ],
+    "answer": "ঢাকা ইলেকট্রিসিটি সাপ্লাই পিএলসি ৩ নভেম্বর ১৯৯৬ সালে প্রতিষ্ঠিত হয় এবং ১৯৯৮ সালে বাণিজ্যিক কার্যক্রম শুরু করে।",
+    "keywords": ["established", "history"]
+  },
+  {
+    "id": 53,
+    "intent": "service_area",
+    "category": "organization_info",
+    "question_variants": [
+      "ডেসকো কোন কোন এলাকায় সার্ভিস দেয়?",
+      "ডেসকোর আওতাভুক্ত এলাকা কি?"
+    ],
+    "answer": "মিরপুর, গুলশান, উত্তরা, টঙ্গীসহ প্রায় ২৪৫ বর্গকিলোমিটার এলাকা ডেসকোর আওতাভুক্ত।",
+    "keywords": ["service area"]
+  },
+  {
+    "id": 54,
+    "intent": "division_contact_info",
+    "category": "contact_info",
+    "question_variants": [
+      "টঙ্গী পূর্ব বিভাগের যোগাযোগ নম্বর কি?",
+      "উত্তরা পশ্চিম অফিসের ফোন নম্বর কি?",
+      "বাড্ডা/গুলশান/পল্লবী বিভাগের নম্বর কি?"
+    ],
+    "answer": "সকল বিক্রয় ও বিতরণ বিভাগের যোগাযোগ নম্বর অফিস সময় (রবি–বৃহস্পতি, সকাল ৯টা–বিকাল ৫টা) ডেসকোর অফিসিয়াল ওয়েবসাইটে পাওয়া যাবে।",
+    "keywords": ["division contact", "office number"]
+  },
+
+  {
+    "id": 78,
+    "intent": "job_circular",
+    "category": "career",
+    "question_variants": [
+      "ডেসকোতে নিয়োগ বিজ্ঞপ্তি আছে?",
+      "চাকরির সার্কুলার কোথায় পাবো?"
+    ],
+    "answer": "নিয়োগ সংক্রান্ত তথ্য ডেসকোর অফিসিয়াল ওয়েবসাইটে প্রকাশ করা হয়।",
+    "keywords": ["job", "career"]
+  },
+  {
+    "id": 79,
+    "intent": "head_office_address",
+    "category": "contact_info",
+    "question_variants": [
+      "ডেসকোর প্রধান কার্যালয়ের ঠিকানা কি?",
+      "কেন্দ্রীয় অফিস কোথায়?"
+    ],
+    "answer": "ঢাকা ইলেকট্রিসিটি সাপ্লাই পিএলসি, ২২/বি, কবি ফররুখ সরণি, নিকুঞ্জ-২, খিলক্ষেত, ঢাকা-১২২৯।",
+    "keywords": ["address", "head office"]
+  },
+  {
+    "id": 80,
+    "intent": "electric_vehicle_info",
+    "category": "information",
+    "question_variants": [
+      "বৈদ্যুতিক যান ব্যবহারের সুবিধা কি?",
+      "EV সুবিধা কি?"
+    ],
+    "answer": "বিস্তারিত তথ্য ডেসকোর অফিসিয়াল ওয়েবসাইটে পাওয়া যাবে।",
+    "keywords": ["EV"]
+  },
+  {
+    "id": 81,
+    "intent": "electricity_tariff_info",
+    "category": "tariff",
+    "question_variants": [
+      "বিদ্যুতের মূল্য হার কত?",
+      "ট্যারিফ রেট কোথায় পাবো?"
+    ],
+    "answer": "বিদ্যুতের মূল্য হার সংক্রান্ত বিস্তারিত তথ্য ডেসকোর অফিসিয়াল ওয়েবসাইটে পাওয়া যাবে।",
+    "keywords": ["tariff"]
+  }
+]
